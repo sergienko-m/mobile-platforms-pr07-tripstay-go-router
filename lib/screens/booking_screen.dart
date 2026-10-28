@@ -26,7 +26,8 @@ class _BookingScreenState extends State<BookingScreen> {
   bool _changed = false;
 
   Future<void> _pickGuests() async {
-    final result = await context.push<int>('/hotels/${widget.hotel.id}/book/guests?value=$_guests');
+    final result = await context
+        .push<int>('/hotels/${widget.hotel.id}/book/guests?value=$_guests');
     if (!mounted) return;
     if (result != null) {
       setState(() {
@@ -39,7 +40,8 @@ class _BookingScreenState extends State<BookingScreen> {
   void _confirm() {
     widget.appState.addTrip(widget.hotel.id);
     setState(() => _changed = false);
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Бронювання збережено')));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text('Бронювання збережено')));
   }
 
   Future<void> _onPopInvoked(bool didPop, Object? result) async {
@@ -50,8 +52,12 @@ class _BookingScreenState extends State<BookingScreen> {
         title: const Text('Вийти без збереження?'),
         content: const Text('Введені дані буде втрачено.'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(dialogContext, false), child: const Text('Залишитися')),
-          FilledButton(onPressed: () => Navigator.pop(dialogContext, true), child: const Text('Вийти')),
+          TextButton(
+              onPressed: () => Navigator.pop(dialogContext, false),
+              child: const Text('Залишитися')),
+          FilledButton(
+              onPressed: () => Navigator.pop(dialogContext, true),
+              child: const Text('Вийти')),
         ],
       ),
     );
@@ -68,18 +74,22 @@ class _BookingScreenState extends State<BookingScreen> {
         body: ListView(
           padding: const EdgeInsets.all(20),
           children: [
-            Text(widget.hotel.name, style: Theme.of(context).textTheme.headlineSmall),
-            Text('Ночей: ${widget.nights} · ${widget.hotel.price * widget.nights} грн'),
+            Text(widget.hotel.name,
+                style: Theme.of(context).textTheme.headlineSmall),
+            Text(
+                'Ночей: ${widget.nights} · ${widget.hotel.price * widget.nights} грн'),
             const SizedBox(height: 20),
             Card(
               child: ListTile(
                 leading: const Icon(Icons.people),
                 title: Text('Гості: $_guests'),
-                trailing: TextButton(onPressed: _pickGuests, child: const Text('Змінити')),
+                trailing: TextButton(
+                    onPressed: _pickGuests, child: const Text('Змінити')),
               ),
             ),
             TextField(
-              decoration: const InputDecoration(labelText: 'Ім’я гостя', border: OutlineInputBorder()),
+              decoration: const InputDecoration(
+                  labelText: 'Ім’я гостя', border: OutlineInputBorder()),
               onChanged: (_) => setState(() => _changed = true),
             ),
             const SizedBox(height: 16),

@@ -13,13 +13,15 @@ class TripsScreen extends StatelessWidget {
     return ListenableBuilder(
       listenable: appState,
       builder: (context, _) {
-        final upcoming = hotels.where((h) => appState.trips.contains(h.id)).toList();
+        final upcoming =
+            hotels.where((h) => appState.trips.contains(h.id)).toList();
         return DefaultTabController(
           length: 2,
           child: Scaffold(
             appBar: AppBar(
               title: const Text('Поїздки'),
-              bottom: const TabBar(tabs: [Tab(text: 'Майбутні'), Tab(text: 'Минулі')]),
+              bottom: const TabBar(
+                  tabs: [Tab(text: 'Майбутні'), Tab(text: 'Минулі')]),
             ),
             body: TabBarView(
               children: [
@@ -28,7 +30,10 @@ class TripsScreen extends StatelessWidget {
                     : ListView(
                         children: [
                           for (final h in upcoming)
-                            ListTile(leading: const Icon(Icons.luggage), title: Text(h.name), subtitle: Text(h.city)),
+                            ListTile(
+                                leading: const Icon(Icons.luggage),
+                                title: Text(h.name),
+                                subtitle: Text(h.city)),
                         ],
                       ),
                 const Center(child: Text('Минулі поїздки з’являться тут')),

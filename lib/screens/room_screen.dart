@@ -17,7 +17,8 @@ class RoomScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final room = rooms.firstWhere((r) => r.id == roomId, orElse: () => rooms.first);
+    final room =
+        rooms.firstWhere((r) => r.id == roomId, orElse: () => rooms.first);
     return Scaffold(
       appBar: AppBar(title: Text(room.name)),
       body: Padding(
@@ -27,12 +28,14 @@ class RoomScreen extends StatelessWidget {
           children: [
             const Icon(Icons.king_bed, size: 72, color: Colors.teal),
             const SizedBox(height: 16),
-            Text('${room.name} у готелі ${hotel.name}', style: Theme.of(context).textTheme.headlineSmall),
+            Text('${room.name} у готелі ${hotel.name}',
+                style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(height: 8),
             Text('${hotel.city} · ${room.priceFor(hotel)} грн за ніч'),
             const SizedBox(height: 24),
             FilledButton(
-              onPressed: () => context.push('/hotels/${hotel.id}/book?nights=$nights'),
+              onPressed: () =>
+                  context.push('/hotels/${hotel.id}/book?nights=$nights'),
               child: const Text('Забронювати'),
             ),
           ],

@@ -12,8 +12,12 @@ class TripBookingApp extends StatelessWidget {
   final AppState appState;
   @override
   Widget build(BuildContext context) => MaterialApp.router(
-    title: 'TripStay',
-    theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff176b87)), useMaterial3: true, scaffoldBackgroundColor: const Color(0xfff5f8fa)),
-    routerConfig: createRouter(appState),
-  );
+        title: 'TripStay',
+        theme: ThemeData(
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: const Color(0xff176b87)),
+            useMaterial3: true,
+            scaffoldBackgroundColor: const Color(0xfff5f8fa)),
+        routerConfig: createRouter(appState),
+      );
 }

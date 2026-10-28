@@ -14,7 +14,8 @@ class FavoritesScreen extends StatelessWidget {
     return ListenableBuilder(
       listenable: appState,
       builder: (context, _) {
-        final favorites = hotels.where((h) => appState.favoriteIds.contains(h.id)).toList();
+        final favorites =
+            hotels.where((h) => appState.favoriteIds.contains(h.id)).toList();
         return Scaffold(
           appBar: AppBar(title: const Text('Обране')),
           body: favorites.isEmpty
