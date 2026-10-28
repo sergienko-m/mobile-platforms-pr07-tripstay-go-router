@@ -22,7 +22,9 @@ GoRouter createRouter(AppState appState) {
     if (isBooking && !appState.isLoggedIn) {
       return '/login?from=${Uri.encodeComponent(location)}';
     }
-    if (state.uri.path == '/login' && appState.isLoggedIn) return '/hotels';
+    if (state.uri.path == '/login' && appState.isLoggedIn) {
+      return state.uri.queryParameters['from'] ?? '/hotels';
+    }
     return null;
   }
 
@@ -41,7 +43,7 @@ GoRouter createRouter(AppState appState) {
           StatefulShellBranch(routes: [
             GoRoute(path: '/hotels', builder: (context, state) => SearchScreen(appState: appState, city: state.uri.queryParameters['city'] ?? '', nights: int.tryParse(state.uri.queryParameters['nights'] ?? '') ?? 1), routes: [
               GoRoute(path: ':hotelId', builder: (context, state) => HotelScreen(hotel: _hotel(state.pathParameters['hotelId']!), appState: appState, city: state.uri.queryParameters['city'] ?? '', nights: int.tryParse(state.uri.queryParameters['nights'] ?? '') ?? 1), routes: [
-                GoRoute(path: 'rooms/:roomId', builder: (context, state) => RoomScreen(hotel: _hotel(state.pathParameters['hotelId']!), roomId: state.pathParameters['roomId']!)),
+                GoRoute(path: 'rooms/:roomId', builder: (context, state) => RoomScreen(hotel: _hotel(state.pathParameters['hotelId']!), roomId: state.pathParameters['roomId']!, nights: int.tryParse(state.uri.queryParameters['nights'] ?? '') ?? 1)),
                 GoRoute(path: 'book', builder: (context, state) => BookingScreen(hotel: _hotel(state.pathParameters['hotelId']!), appState: appState, nights: int.tryParse(state.uri.queryParameters['nights'] ?? '') ?? 1), routes: [
                   GoRoute(path: 'guests', builder: (context, state) => GuestPickerScreen(initial: int.tryParse(state.uri.queryParameters['value'] ?? '') ?? 2)),
                 ]),

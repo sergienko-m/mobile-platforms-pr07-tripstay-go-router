@@ -15,3 +15,18 @@ const hotels = <Hotel>[
   Hotel(id: 'bukovel-pines', name: 'Pine Valley Lodge', city: 'Буковель', rating: 4.9, price: 3200, description: 'Гірський будиночок для відпочинку всією сім’єю.'),
   Hotel(id: 'kharkiv-smart', name: 'Smart Stay Kharkiv', city: 'Харків', rating: 4.4, price: 1250, description: 'Сучасні номери для коротких ділових поїздок.'),
 ];
+
+class Room {
+  const Room({required this.id, required this.name, required this.priceFactor});
+  final String id;
+  final String name;
+  final double priceFactor;
+
+  int priceFor(Hotel hotel) => (hotel.price * priceFactor).round();
+}
+
+const rooms = <Room>[
+  Room(id: 'standard', name: 'Стандартний номер', priceFactor: 1.0),
+  Room(id: 'deluxe', name: 'Покращений номер', priceFactor: 1.4),
+  Room(id: 'family', name: 'Сімейний номер', priceFactor: 1.8),
+];

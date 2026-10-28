@@ -13,7 +13,7 @@ flutter analyze
 flutter test
 ```
 
-У цьому середовищі Flutter SDK не встановлений, тому команди наведено для запуску локально у Flutter 3.x / Dart 3.x.
+Потрібні Flutter 3.x та Dart 3.x.
 
 ## Карта маршрутів
 
@@ -21,7 +21,7 @@ flutter test
 |---|---|---|
 | `/hotels?city=Київ&nights=3` | Пошук | — |
 | `/hotels/:hotelId` | Деталі готелю | — |
-| `/hotels/:hotelId/rooms/:roomId` | Номер | зарезервовано для розширення |
+| `/hotels/:hotelId/rooms/:roomId?nights=3` | Номер | — |
 | `/hotels/:hotelId/book?nights=3` | Форма бронювання | потрібен вхід |
 | `/hotels/:hotelId/book/guests` | Вибір гостей | потрібен вхід через батьківський маршрут |
 | `/trips` | Поїздки: Майбутні / Минулі | — |
@@ -57,7 +57,7 @@ flutter test
 Android Emulator:
 
 ```bash
-adb shell am start -a android.intent.action.VIEW -d "trip://app/hotels/kyiv-center?nights=3" com.example.tripBookingApp
+adb shell am start -a android.intent.action.VIEW -d "trip://app/hotels/kyiv-center?nights=3" com.example.trip_booking_app
 ```
 
 iOS Simulator:
