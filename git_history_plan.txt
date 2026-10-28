@@ -1,0 +1,6 @@
+Коміти для здачі:
+1. chore: initialize TripStay Flutter project
+2. feat: add in-memory hotel models and app state
+3. feat: add go_router shell and protected booking routes
+4. feat: add booking flow, guest result and deep links
+5. docs: add README, tests and demonstration materials
